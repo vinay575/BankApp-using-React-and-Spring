@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+.body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../images/pexels.jpeg");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.container {
+    color:black;
+    font-weight: bold;
+    font-size: large;
+    width: 90%; /* Adjust the width as needed */
+    max-width: 400px; /* Set a maximum width */
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid gray;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.header {
+    padding: 20px 5%; /* Use percentage for responsive padding */
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.form {
+    padding: 5% 5%; /* Use percentage for responsive padding */
+}
+
+.field {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.field label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.field input:not(.terms) {
+    display: block;
+    border-radius: 4px;
+    border: 1px solid gray;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px;
+}
+
+.form .button {
+    background-color: #1894f2;
+    border: 1px solid black;
+    color: white;
+    display: block;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Additional styles for better responsiveness */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        margin: 70px auto 0; /* Center the container and add a top margin */
+    }
+
+    .header,
+    .form {
+        padding: 10px;
+    }
+}

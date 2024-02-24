@@ -5,7 +5,7 @@ import Navbar from '../components/content/Header.js';
 import Statement from '../components/content/Statement.js'; 
 import Home from '../components/content/home.js'; 
 import About from '../components/content/about.js'; 
-import SignUp from '../components/log-sup/Sign_up'; 
+import SignUp from '../components/log-sup/sign_up.js';
 import Login from '../components/log-sup/login.js'; // Import the Login component
 import Contact from '../components/content/contact.js';
 

@@ -1,113 +1,126 @@
-import React, { useState } from 'react';
-import './log-sup.css'; 
+import { useState } from "react";
+import axios from "axios";
+import './log-sup.css'; // Import CSS for styling
 
+function Sign_up() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
 
-const Sign_up = () => {
-  const [data, setData] = useState({
-    Username: '',
-    email: '',
-    password: '',
-    ConformPassword: '',
-  });
-
-  const { Username, email, password, ConformPassword } = data;
-
-  const changeHandler = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+  const save = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post("http://localhost:8080/bank/user", {
+        username: username,
+        password: password,
+        phoneNumber: phoneNumber,
+        email: email,
+        address: address,
+      });
+      alert("User Registration Successful");
+    } catch (err) {
+      alert(err);
+    }
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log(data);
+  // Validation logic
+  const isValidEmail = (email) => {
+    return email.includes('@') && email.includes('.');
+  };
 
-  // Basic form validation
-  if (!Username.trim() || !email.trim() || !password.trim() || !ConformPassword.trim()) {
-    alert('All fields are required');
-    return;
-  }
+  const isValidPassword = (password) => {
+    return password.length >= 8 && /[a-z]/.test(password) && /[A-Z]/.test(password) && /\d/.test(password);
+  };
 
-  // Email format validation
-  if (!isValidEmail(email)) {
-    alert('Invalid email format');
-    return;
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  // Password strength validation (minimum 8 characters, at least one uppercase letter, one lowercase letter, and one digit)
-  if (!isValidPassword(password)) {
-    alert('Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit');
-    return;
-  }
+    if (!username.trim() || !email.trim() || !password.trim() || !phoneNumber.trim() || !address.trim()) {
+      alert('All fields are required');
+      return;
+    }
 
-  // Check if passwords match
-  if (password !== ConformPassword) {
-    alert('Passwords do not match');
-    return;
-  }
+    if (!isValidEmail(email)) {
+      alert('Invalid email format');
+      return;
+    }
 
-  // If all validations pass, you can proceed with form submission 
-  console.log('Form submitted:', data);
+    if (!isValidPassword(password)) {
+      alert('Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit');
+      return;
+    }
 
-  // Reset form fields after successful submission
-  setData({
-    Username: '',
-    email: '',
-    password: '',
-    ConformPassword: '',
-  });
-};
-
-//to check email validation
-const isValidEmail = (email) => {
- return email.includes('@') && email.includes('.');
-};
-
-//to check password validation  
-//Minimum length of 8 characters.
-//Contains at least one lowercase letter.
-//Contains at least one uppercase letter.
-//Contains at least one digit.
-// && logic and all should be true
-const isValidPassword = (password) => {
-  return password.length >= 8 && /[a-z]/.test(password) && /[A-Z]/.test(password) && /\d/.test(password);
-};
+    save(event);
+  };
 
   return (
-    <div className='body'>
-      <div className='container'>
-        <div className='header'>
+    <div className="body">
+      <div className="container">
+        <div className="header">
           <h2>Register Here</h2>
         </div>
-        <form action='' className='form' id='form' onSubmit={submitHandler}>
-          <div className='field'>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="field">
             <label>Username</label>
-            <input type='text' placeholder='Username' name='Username' value={Username} onChange={changeHandler} id='uname' />
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
           </div>
-
-          <div className='field'>
-            <label>E-mail</label>
-            <input type='email' placeholder='abcdefg@com' name='email' value={email} onChange={changeHandler} id='email' />
-          </div>
-
-          <div className='field'>
+          <div className="field">
             <label>Password</label>
-            <input type='password' placeholder='password'  name='password'  value={password}  onChange={changeHandler}  id='password' /> 
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
           </div>
-
-          <div className='field'>
-            <label>Confirm Password</label>
-            <input type='password' placeholder='Confirm-password' name='ConformPassword' value={ConformPassword} onChange={changeHandler} id='confirmPassword'/>
+          <div className="field">
+            <label>Phone Number</label>
+            <input
+              type="text"
+              placeholder="Phone Number"
+              value={phoneNumber}
+              onChange={(event) => setPhoneNumber(event.target.value)}
+            />
           </div>
-
-          <div className='field'>
-            <input type='checkbox' id='tc' className='terms' />
-            <label htmlFor='tc'>I Agree To Terms And Conditions</label>
+          <div className="field">
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
           </div>
-
-          <input type='submit' className='button' name='submit' />
+          <div className="field">
+            <label>Address</label>
+            <input
+              type="text"
+              placeholder="Address"
+              value={address}
+              onChange={(event) => setAddress(event.target.value)}
+            />
+          </div>
+          <div className="field">
+            <input
+              type="checkbox"
+              id="tc"
+              className="terms"
+              required
+            />
+            <label htmlFor="tc">I Agree To Terms And Conditions</label>
+          </div>
+          <input type="submit" className="button" name="submit" />
         </form>
       </div>
     </div>
   );
-};
+}
 
 export default Sign_up;

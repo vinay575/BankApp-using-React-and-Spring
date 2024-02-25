@@ -1,4 +1,4 @@
-package com.Bank.dto;
+package com.BankApplication.dto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

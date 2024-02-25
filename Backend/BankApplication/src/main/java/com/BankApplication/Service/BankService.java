@@ -1,10 +1,10 @@
-package com.Bank.service;
+package com.BankApplication.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Bank.dto.BankAccountDTO;
-import com.Bank.repository.BankRepository;
+import com.BankApplication.Repository.BankRepository;
+import com.BankApplication.dto.BankAccountDTO;
 
 @Service
 public class BankService {
@@ -14,14 +14,9 @@ public class BankService {
     public BankService(BankRepository bankRepository) {
         this.bankRepository = bankRepository;
     }
-    
-   // method 
+
     public BankAccountDTO createBankAccount(BankAccountDTO bankAccount) {
         return bankRepository.save(bankAccount);
     }
 
 }
-
-//services uses @Service annotion 
-//we call repositry inside services 
-// after this we create controller 

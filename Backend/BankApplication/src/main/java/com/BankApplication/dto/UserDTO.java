@@ -1,4 +1,4 @@
-package com.Bank.dto;
+package com.BankApplication.dto;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class UserDTO {
 		
 	}
 
-	public UserDTO(Integer userId, String username, String password,  String phoneNumber, String email,
+	public UserDTO(Integer userId, String username, String password, String phoneNumber, String email,
 			String address) {
 		super();
 		this.userId = userId;
@@ -72,7 +72,9 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
@@ -104,6 +106,6 @@ public class UserDTO {
 
 	@Override
 	public String toString() {
-		return "UserDTO [userId=" + userId + ", username=" + username + ", password=" + password +", phoneNumber=" + phoneNumber + ", email=" + email + ", address=" + address + "]";
+		return "UserDTO [userId=" + userId + ", username=" + username + ", password=" + password + ", phoneNumber=" + phoneNumber + ", email=" + email + ", address=" + address + "]";
 	}
 }

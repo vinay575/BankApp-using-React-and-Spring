@@ -12,7 +12,7 @@ function Sign_up() {
   const save = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:8080/bank/user", {
+      await axios.post("http://localhost:8080/user/add", {
         username: username,
         password: password,
         phoneNumber: phoneNumber,

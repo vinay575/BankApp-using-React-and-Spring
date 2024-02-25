@@ -11,7 +11,7 @@
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    background-image: url("../../images/pexels.jpeg");
+    background-image: url("../../images/pexels.jpg");
     background-color: #cccccc;
     height: 500px;
     background-position: center;
@@ -20,7 +20,7 @@
     position: relative;
 }
 
-.container {
+.form-container {
     color:black;
     font-weight: bold;
     font-size: large;
@@ -36,7 +36,7 @@
 }
 
 .header {
-    padding: 20px 5%; /* Use percentage for responsive padding */
+    padding: 15px 5%; /* Use percentage for responsive padding */
 }
 
 .header h2 {
@@ -48,14 +48,14 @@
 }
 
 .field {
-    margin-bottom: 10px;
-    padding-bottom: 20px;
+    margin-bottom: 7px;
+    padding-bottom: 5px;
     position: relative;
 }
 
 .field label {
     display: inline-block;
-    margin-bottom: 5px;
+    margin-bottom:3px;
 }
 
 .field input:not(.terms) {

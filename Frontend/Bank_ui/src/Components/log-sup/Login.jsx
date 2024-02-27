@@ -25,6 +25,8 @@ export default function Login() {
     Axios.get('http://localhost:8080/user/get/' + user.username)
       .then((res) => {
         if (res.data.password === user.password) {
+          // Store the username in the local storage upon successful login
+          localStorage.setItem('username', user.username);
           navigate('/hOmEpAgE');
         } else {
           alert('Please enter the correct username and password');
@@ -35,7 +37,7 @@ export default function Login() {
       .catch((error) => {
         console.error('Error during login:', error);
       });
-  };
+  }
 
   return (
     <div className='body'>
@@ -81,3 +83,5 @@ export default function Login() {
     </div>
   );
 }
+
+

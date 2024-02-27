@@ -1,16 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 
-export default function Home() {
+const Home = () => {
+  const [userDetails, setUserDetails] = useState({
+    userId: '',
+    username: '',
+    password: '',
+    phoneNumber: '',
+    email: '',
+    address: ''
+  });
+
+  useEffect(() => {
+    // Fetch user details from the backend upon component mount
+    Axios.get('http://localhost:8080/user/get/' + localStorage.getItem('username'))
+      .then((res) => {
+        setUserDetails(res.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching user details:', error);
+      });
+  }, []);
+
   return (
-    <div className='container'>
-      <h1 className='text-center text-success m-5'>Welcome User...!</h1>
-      <p className='h5 text-center'>Here you can find out new cars available near you...</p>
-      <div className="container">
-        <img src="/src/assets/bmw-car.gif" alt="car1" width={'500px'} height={'300px'} className='m-5 p-5'/>
-        <img src="/src/assets/bmw-car.gif" alt="car2" width={'500px'} height={'300px'} className='m-5 p-5'/>
-        <img src="/src/assets/bmw-car.gif" alt="car3" width={'500px'} height={'300px'} className='m-5 p-5'/>
-        <img src="/src/assets/bmw-car.gif" alt="car4" width={'500px'} height={'300px'} className='m-5 p-5'/>
-      </div>
+    <div>
+      <h2>Welcome, {userDetails.username}!</h2>
+      <p>Here are your details:</p>
+      <ul>
+        <li>User ID: {userDetails.userId}</li>
+        <li>Username: {userDetails.username}</li>
+        <li>Phone Number: {userDetails.phoneNumber}</li>
+        <li>Email: {userDetails.email}</li>
+        <li>Address: {userDetails.address}</li>
+      </ul>
     </div>
-  )
-}
+  );
+};
+
+export default Home;

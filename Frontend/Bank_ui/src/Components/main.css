@@ -1,0 +1,78 @@
+/* main.css */
+
+/* Define custom styles for tables */
+.custom-table {
+  width: 95%;
+  border-collapse: collapse;
+}
+
+.user-table{
+  color:black;
+    font-weight: bold;
+    font-size: large;
+}
+
+
+
+.custom-table.bank-table {
+  width: 100%;
+}
+
+.custom-table.bank-table th,
+.custom-table.bank-table td {
+  padding: 8px;
+  border: 1px solid #000000;
+  text-align: center; /* Align text to center */
+}
+
+.custom-table.bank-table th {
+  background-color: #212020; /* Set background color for bank table header */
+  color: #fff; /* Set text color for bank table header */
+}
+
+
+.home-body {
+  font-size: large;
+  margin: 0;
+  min-height: 100vh;
+  background-image: url("../images/pexels.jpg");
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+/*styles for addaccount--*/
+
+
+.addaccount-body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../images/pexels.jpg");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.addaccount-container {
+  color: black;
+  font-weight: bold;
+  font-size: large;
+  width: 90%; /* Adjust the width as needed */
+  max-width: 480px; /* Set a maximum width */
+  overflow: hidden;
+  border-radius: 8px;
+  border: 2px solid gray;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}

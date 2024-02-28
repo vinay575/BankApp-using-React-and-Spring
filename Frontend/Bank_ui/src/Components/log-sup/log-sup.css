@@ -24,8 +24,6 @@
     color:black;
     font-weight: bold;
     font-size: large;
-    width: 90%; /* Adjust the width as needed */
-    max-width: 480px; /* Set a maximum width */
     overflow: hidden;
     border-radius: 8px;
     border: 2px solid gray;

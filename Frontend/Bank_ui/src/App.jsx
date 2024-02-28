@@ -5,6 +5,8 @@ import Register from './Components/log-sup/Register';
 import Login from './Components/log-sup/Login';
 import Home from './Components/Home';
 import AddBankAccount from './Components/AddBankAccount';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {

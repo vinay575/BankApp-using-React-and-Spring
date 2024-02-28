@@ -24,5 +24,9 @@ public class UserService {
 			return userRepository.findByUsername(userName);
 		}
 		
+		public UserDTO getUserWithAccounts(String userName) {
+		    return userRepository.findByUsernameWithAccounts(userName);
+		}
+
 		
 }

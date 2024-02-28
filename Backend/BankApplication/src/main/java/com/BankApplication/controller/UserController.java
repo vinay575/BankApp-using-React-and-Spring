@@ -13,25 +13,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.BankApplication.Service.UserService;
+import com.BankApplication.Service.BankService;
+import com.BankApplication.dto.BankAccountDTO;
 import com.BankApplication.dto.UserDTO;
 
-@CrossOrigin(origins = "*" , allowedHeaders ="*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/user")
 public class UserController {
 	@Autowired
 	UserService userService;
+	@Autowired
+	BankService bankService;
+
 	@GetMapping("/get")
-	public List<UserDTO> getUser(){
+	public List<UserDTO> getUser() {
 		return userService.getUser();
 	}
+
 	@PostMapping("/add")
 	public UserDTO addUser(@RequestBody UserDTO UserDTO) {
 		return userService.createUser(UserDTO);
-	} 
+	}
+
 	@GetMapping("/get/{userName}")
 	public UserDTO getUserByName(@PathVariable String userName) {
 		return userService.getUserByName(userName);
 	}
-		
+
+	@GetMapping("/getLoggedInUserWithAccounts/{userName}")
+	public UserDTO getLoggedInUserWithAccounts(@PathVariable String userName) {
+		return userService.getUserWithAccounts(userName);
+	}
+
+	@PostMapping("/addaccount")
+	public BankAccountDTO addBankAccount(@RequestBody BankAccountDTO bankAccountDTO) {
+		return bankService.createBankAccount(bankAccountDTO);
+	}
+
 }

@@ -2,9 +2,13 @@ package com.BankApplication.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,13 +16,14 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="user_info")
+@Table(name = "user_info")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
 public class UserDTO {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="userId")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "userId")
 	private Integer userId;
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<BankAccountDTO> bankAccounts;
 
 	@Column(unique = true)
@@ -34,11 +39,10 @@ public class UserDTO {
 
 	public UserDTO() {
 		super();
-		
+
 	}
 
-	public UserDTO(Integer userId, String username, String password, String phoneNumber, String email,
-			String address) {
+	public UserDTO(Integer userId, String username, String password, String phoneNumber, String email, String address) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -106,6 +110,7 @@ public class UserDTO {
 
 	@Override
 	public String toString() {
-		return "UserDTO [userId=" + userId + ", username=" + username + ", password=" + password + ", phoneNumber=" + phoneNumber + ", email=" + email + ", address=" + address + "]";
+		return "UserDTO [userId=" + userId + ", username=" + username + ", password=" + password + ", phoneNumber="
+				+ phoneNumber + ", email=" + email + ", address=" + address + "]";
 	}
 }

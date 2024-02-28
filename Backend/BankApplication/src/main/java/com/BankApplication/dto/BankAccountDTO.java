@@ -1,5 +1,8 @@
 package com.BankApplication.dto;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,27 +13,28 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="bank_info")
+@Table(name = "bank_info")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "accountId")
 public class BankAccountDTO {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer accountId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer accountId;
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private UserDTO user;
-    @Column(unique = true)
-    private String bankAccountNumber;
-    @Column
-    private String bankName;
-    @Column
-    private String ifscCode;
-    @Column
-    private String accountType;
-    @Column
-    private double currentBalance;
-	
-    public BankAccountDTO() {
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	private UserDTO user;
+	@Column(unique = true)
+	private String bankAccountNumber;
+	@Column
+	private String bankName;
+	@Column
+	private String ifscCode;
+	@Column
+	private String accountType;
+	@Column
+	private double currentBalance;
+
+	public BankAccountDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -110,6 +114,4 @@ public class BankAccountDTO {
 				+ ", currentBalance=" + currentBalance + "]";
 	}
 
-	
-	
 }

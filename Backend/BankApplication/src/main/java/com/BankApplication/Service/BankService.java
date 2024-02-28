@@ -1,5 +1,7 @@
 package com.BankApplication.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,15 +10,16 @@ import com.BankApplication.dto.BankAccountDTO;
 
 @Service
 public class BankService {
-	private final BankRepository bankRepository;
 
-    @Autowired
-    public BankService(BankRepository bankRepository) {
-        this.bankRepository = bankRepository;
-    }
+	@Autowired
+	private BankRepository bankRepository;
 
-    public BankAccountDTO createBankAccount(BankAccountDTO bankAccount) {
-        return bankRepository.save(bankAccount);
-    }
+	public List<BankAccountDTO> getAllBankAccounts() {
+		return bankRepository.findAll();
+	}
+
+	public BankAccountDTO createBankAccount(BankAccountDTO bankAccount) {
+		return bankRepository.save(bankAccount);
+	}
 
 }

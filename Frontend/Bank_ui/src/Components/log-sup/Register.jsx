@@ -26,7 +26,11 @@ export default function Register() {
       console.log(response.data);
       navigate('/');
     } catch (error) {
-      console.error('Error during registration:', error.response?.data || error.message);
+      if (error.response && error.response.status === 409) {
+        setErrorMessage('Username already exists. Please choose a different username.');
+      } else {
+        console.error('Error during registration:', error.response?.data || error.message);
+      }
     }
   };
 

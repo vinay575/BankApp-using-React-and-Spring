@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 const Home = () => {
@@ -8,12 +9,12 @@ const Home = () => {
     password: '',
     phoneNumber: '',
     email: '',
-    address: ''
+    address: '',
+    bankAccounts: []
   });
 
   useEffect(() => {
-    // Fetch user details from the backend upon component mount
-    Axios.get('http://localhost:8080/user/get/' + localStorage.getItem('username'))
+    Axios.get('http://localhost:8080/user/getLoggedInUserWithAccounts/' + localStorage.getItem('username'))
       .then((res) => {
         setUserDetails(res.data);
       })
@@ -33,6 +34,15 @@ const Home = () => {
         <li>Email: {userDetails.email}</li>
         <li>Address: {userDetails.address}</li>
       </ul>
+      <h3>Your Bank Accounts:</h3>
+      <ul>
+        {userDetails.bankAccounts.map(account => (
+          <li key={account.accountId}>
+            Account ID: {account.accountId}, Bank: {account.bankName}, Balance: {account.currentBalance}
+          </li>
+        ))}
+      </ul>
+      <Link to="/add-bank-account">Add Bank Account</Link>
     </div>
   );
 };

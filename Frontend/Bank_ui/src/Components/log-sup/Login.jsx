@@ -25,8 +25,9 @@ export default function Login() {
     Axios.get('http://localhost:8080/user/get/' + user.username)
       .then((res) => {
         if (res.data.password === user.password) {
-          // Store the username in the local storage upon successful login
+          // Store both username and userId in local storage upon successful login
           localStorage.setItem('username', user.username);
+          localStorage.setItem('userId', res.data.userId); // Assuming userId is available in the response
           navigate('/hOmEpAgE');
         } else {
           alert('Please enter the correct username and password');
@@ -83,5 +84,3 @@ export default function Login() {
     </div>
   );
 }
-
-

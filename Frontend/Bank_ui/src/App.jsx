@@ -5,6 +5,7 @@ import Register from './Components/log-sup/Register';
 import Login from './Components/log-sup/Login';
 import Home from './Components/Home';
 import AddBankAccount from './Components/AddBankAccount';
+import AddMoney from './Components/AddMoney';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/hOmEpAgE" element={<Home />} />
           <Route path="/add-bank-account" element={<AddBankAccount />} />
+          <Route path="/add-money/:accountId" element={<AddMoney />} />
         </Routes>
       </BrowserRouter>
     </>
@@ -25,3 +27,5 @@ function App() {
 }
 
 export default App
+
+

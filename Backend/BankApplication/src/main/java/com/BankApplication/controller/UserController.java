@@ -50,5 +50,14 @@ public class UserController {
 	public BankAccountDTO addBankAccount(@RequestBody BankAccountDTO bankAccountDTO) {
 		return bankService.createBankAccount(bankAccountDTO);
 	}
+    
+	
 
+	@PostMapping("/addMoney/{accountId}/{amount}")
+	public BankAccountDTO addMoneyToAccount(@PathVariable Integer accountId, @PathVariable double amount) {
+	    return bankService.addMoneyToAccount(accountId, amount);
+	}
+
+	
+	
 }

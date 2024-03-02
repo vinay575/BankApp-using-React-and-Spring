@@ -28,7 +28,7 @@ const AddMoney = () => {
                <form  className="form" onSubmit={handleSubmit}>
                <div className="field">
                   <label> Amount:</label>
-                   <input type="number" value={amount} onChange={(event) => setAmount(event.target.value)} />
+                   <input type="number" value={amount} onChange={(event) => setAmount(event.target.value)} required/>
                 </div>
                 <button type="submit" className="btn btn-primary">Add Money</button>
                </form>

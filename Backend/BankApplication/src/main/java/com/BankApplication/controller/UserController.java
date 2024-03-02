@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.BankApplication.Service.UserService;
 import com.BankApplication.Service.BankService;
 import com.BankApplication.dto.BankAccountDTO;
+import com.BankApplication.dto.SendMoneyRequest;
 import com.BankApplication.dto.UserDTO;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -57,7 +58,7 @@ public class UserController {
 	public BankAccountDTO addMoneyToAccount(@PathVariable Integer accountId, @PathVariable double amount) {
 	    return bankService.addMoneyToAccount(accountId, amount);
 	}
-
-	
 	
 }
+	
+	

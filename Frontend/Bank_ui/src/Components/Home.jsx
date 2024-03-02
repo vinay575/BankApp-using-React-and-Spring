@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import './main.css';
 import AddMoney from './AddMoney';
+import SendMoney from './SendMoney'; // Import the SendMoney component
 
 const Home = () => {
   const [userDetails, setUserDetails] = useState({
@@ -95,10 +96,11 @@ const Home = () => {
             {selectedAccount && (
               <div>
                 <h4>Selected Account: {selectedAccount}</h4>
-                
-                <button className="btn btn-primary" onClick={() => navigate(`/add-money/${selectedAccount}`)}>
+                <button className="btn btn-primary" onClick={() => navigate(`/add-money/${selectedAccount}`)} style={{ margin: '10px' }}>
                   Add Money
-                </button>
+                </button> 
+                
+                <button className="btn btn-primary" onClick={() => navigate(`/send-money/${selectedAccount}`)}> Send Money </button>
               </div>
             )}
           </div>

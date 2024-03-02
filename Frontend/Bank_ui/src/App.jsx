@@ -21,7 +21,6 @@ function App() {
           <Route path="/hOmEpAgE" element={<Home />} />
           <Route path="/add-bank-account" element={<AddBankAccount />} />
           <Route path="/add-money/:accountId" element={<AddMoney />} />
-          <Route path="/" element={<Home />} />
           <Route path="/send-money/:selectedAccount" element={<SendMoney />} />        
           
         </Routes>

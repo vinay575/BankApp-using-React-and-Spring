@@ -18,6 +18,7 @@ import com.BankApplication.dto.BankAccountDTO;
 import com.BankApplication.dto.SendMoneyRequest;
 import com.BankApplication.dto.UserDTO;
 
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/user")
@@ -58,7 +59,11 @@ public class UserController {
 	public BankAccountDTO addMoneyToAccount(@PathVariable Integer accountId, @PathVariable double amount) {
 	    return bankService.addMoneyToAccount(accountId, amount);
 	}
-	
+	@PostMapping("/sendMoney/{senderAccountId}")
+	public BankAccountDTO sendMoney(@PathVariable Integer senderAccountId, @RequestBody SendMoneyRequest sendMoneyRequest) {
+	    return bankService.sendMoney(senderAccountId, sendMoneyRequest);
+	}
+
 }
 	
 	

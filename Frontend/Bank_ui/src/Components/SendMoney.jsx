@@ -8,18 +8,18 @@ const SendMoney = () => {
     const [amount, setAmount] = useState('');
     const navigate = useNavigate();
 
-    const handleSendMoney = () => {
+    const handleSendMoney = (event) => {
+        event.preventDefault();
         Axios.post(`http://localhost:8080/user/sendMoney/${selectedAccount}`, { recipientAccount, amount })
-            .then(response => {
-                window.alert('Money sent successfully!');
-                navigate('/hOmEpAgE');
-                // You can add further logic here, such as updating UI or showing a success message
-            })
-            .catch(error => {
-                console.error('Error sending money:', error);
-                // Handle errors as per your application requirements
-            });
-    };
+          .then(response => {
+            alert('Money sent successfully!'); // Show the alert message
+            navigate('/hOmEpAgE');
+          })
+          .catch(error => {
+            console.error('Error sending money:', error);
+            // Handle errors as per your application requirements
+          });
+      };
 
     return (
 

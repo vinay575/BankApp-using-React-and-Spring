@@ -1,9 +1,12 @@
+// Home.jsx
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import './main.css';
 import AddMoney from './AddMoney';
-import SendMoney from './SendMoney'; // Import the SendMoney component
+import SendMoney from './SendMoney';
+import Statement from './Statement';
+
 
 const Home = () => {
   const [userDetails, setUserDetails] = useState({
@@ -17,6 +20,7 @@ const Home = () => {
   });
 
   const [selectedAccount, setSelectedAccount] = useState(null);
+  const [showStatements, setShowStatements] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,6 +35,10 @@ const Home = () => {
 
   const handleAccountSelection = (accountId) => {
     setSelectedAccount(accountId);
+  };
+
+  const handleStatementClick = () => {
+    setShowStatements(true);
   };
 
   return (
@@ -101,7 +109,16 @@ const Home = () => {
                 </button> 
                 
                 <button className="btn btn-primary" onClick={() => navigate(`/send-money/${selectedAccount}`)}  style={{ margin: '10px' }}> Send Money </button>
-                <button className="btn btn-primary" onClick={() => navigate(`/Transition/${selectedAccount}`)} style={{ margin: '10px' }}> Transition </button>
+                
+                <button className="btn btn-primary" onClick={handleStatementClick}>
+                  View Statements
+                </button>
+                {showStatements && (
+                   <div>
+                    <button className="btn btn-danger mb-3" onClick={() => setShowStatements(false)}>Close Statements</button>
+                         <Statement selectedAccount={selectedAccount} onClose={() => setShowStatements(false)} />
+                      </div>
+                    )}
               </div>
             )}
           </div>

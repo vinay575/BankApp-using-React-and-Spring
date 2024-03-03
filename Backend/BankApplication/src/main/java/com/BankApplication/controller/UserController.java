@@ -73,9 +73,10 @@ public class UserController {
 		);
 	}
 
-	@GetMapping("/statements/{bankAccountId}")
-	public List<StatementDTO> getStatementsForAccount(@PathVariable Integer bankAccountId) {
-		return statementService.getStatementsForAccount(bankAccountId);
-	}
+
+    @GetMapping("/statements/{bankAccountId}")
+    public List<StatementDTO> getStatementsForAccount(@PathVariable Integer bankAccountId) {
+        return statementService.getStatementsForAccount(bankAccountId);
+    }
 
 }

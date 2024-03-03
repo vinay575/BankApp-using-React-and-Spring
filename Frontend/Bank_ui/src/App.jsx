@@ -7,6 +7,7 @@ import Home from './Components/Home';
 import AddBankAccount from './Components/AddBankAccount';
 import AddMoney from './Components/AddMoney'
 import SendMoney from './Components/SendMoney';
+import Transition from './Components/Transition';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -21,7 +22,8 @@ function App() {
           <Route path="/hOmEpAgE" element={<Home />} />
           <Route path="/add-bank-account" element={<AddBankAccount />} />
           <Route path="/add-money/:accountId" element={<AddMoney />} />
-          <Route path="/send-money/:selectedAccount" element={<SendMoney />} />        
+          <Route path="/send-money/:selectedAccount" element={<SendMoney />} />    
+          <Route path="/Transition/:selectedAccount" element={<Transition />} />        
           
         </Routes>
       </BrowserRouter>

@@ -10,7 +10,11 @@ const SendMoney = () => {
 
   const handleSendMoney = (event) => {
     event.preventDefault();
-    Axios.post(`http://localhost:8080/user/sendMoney/${selectedAccount}`, { recipientAccount, amount })
+    Axios.post(`http://localhost:8080/user/sendMoney/${selectedAccount}`, {
+      recipientAccount,
+      amount,
+      bankAccountId: parseInt(selectedAccount) // Include bank account ID
+    })
       .then(response => {
         alert('Money sent successfully!');
         navigate('/hOmEpAgE');
@@ -20,7 +24,8 @@ const SendMoney = () => {
         Axios.post('http://localhost:8080/user/createStatement', {
           amount: parseFloat(amount),
           fromAccountId: parseInt(selectedAccount),
-          toAccountId: parseInt(recipientAccount)
+          toAccountId: parseInt(recipientAccount),
+          bankAccountId: parseInt(selectedAccount) // Include bank account ID
         });
       })
       .catch(error => {

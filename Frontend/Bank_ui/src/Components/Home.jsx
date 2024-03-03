@@ -100,7 +100,8 @@ const Home = () => {
                   Add Money
                 </button> 
                 
-                <button className="btn btn-primary" onClick={() => navigate(`/send-money/${selectedAccount}`)}> Send Money </button>
+                <button className="btn btn-primary" onClick={() => navigate(`/send-money/${selectedAccount}`)}  style={{ margin: '10px' }}> Send Money </button>
+                <button className="btn btn-primary" onClick={() => navigate(`/Transition/${selectedAccount}`)} style={{ margin: '10px' }}> Transition </button>
               </div>
             )}
           </div>

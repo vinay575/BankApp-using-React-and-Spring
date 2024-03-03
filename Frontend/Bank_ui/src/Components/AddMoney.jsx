@@ -9,7 +9,9 @@ const AddMoney = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    Axios.post(`http://localhost:8080/user/addMoney/${accountId}/${amount}`)
+    Axios.post(`http://localhost:8080/user/addMoney/${accountId}/${amount}`, {
+      bankAccountId: parseInt(accountId)
+    })
       .then((response) => {
         alert('Money added successfully:', response.data);
         navigate('/hOmEpAgE');
@@ -19,7 +21,8 @@ const AddMoney = () => {
         Axios.post('http://localhost:8080/user/createStatement', {
           amount: parseFloat(amount),
           fromAccountId: parseInt(accountId),
-          toAccountId: null // No recipient account for adding money
+          toAccountId: null, // No recipient account for adding money
+          bankAccountId: parseInt(accountId) // Include bank account ID
         });
       })
       .catch((error) => {
